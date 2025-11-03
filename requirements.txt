@@ -1,0 +1,9 @@
+ultralytics
+opencv-python
+numpy
+Flask
+flask-cors
+pymongo
+dnspython
+gunicorn
+face_recognition
