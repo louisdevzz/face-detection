@@ -1,5 +1,3 @@
-ultralytics
-opencv-python
 numpy
 Flask
 flask-cors
@@ -7,3 +5,7 @@ pymongo
 dnspython
 gunicorn
 face_recognition
+insightface
+onnxruntime 
+opencv-python-headless
+python-dotenv

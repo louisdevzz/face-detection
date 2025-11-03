@@ -1,27 +1,30 @@
 import uuid
+from typing import Dict, Any
 
-
-def create_user_document(data, image_path, face_encoding=None):
+def create_user_document(data: Dict[str, Any], face: Dict[str, Any], embedding_version: str = "insightface-buffalo_l-v1") -> Dict:
     """
-    Create a user document for MongoDB.
-    :param face_encoding: numpy array of face encoding, will be converted to list
+    Tạo document consistent để lưu MongoDB.
+    face: dict returned from FaceDetection.get_best_face()
     """
-    doc = {
-        "uuid": str(uuid.uuid4()),
-        "name": data.get("name"),
-        "student_id": data.get("student_id"),
-        "class": data.get("class"),
-        "department": data.get("department"),
-        "room": data.get("room"),
-        "image_path": image_path,
+    return {
+        "user_id": str(uuid.uuid4()),
+        "profile": {
+            "name": data.get("name"),
+            "student_id": data.get("student_id"),
+            "department": data.get("department"),
+            "class": data.get("class"),
+            "room": data.get("room"),
+        },
+        "faces": [
+            {
+                "image_path": data.get("image_path"),
+                "embedding": face.get("embedding"),       # list
+                "confidence": face.get("conf"),
+                "landmarks": face.get("landmarks"),
+                "added_at": data.get("registered_at"),
+            }
+        ],
+        "embedding_version": embedding_version,
         "registered_at": data.get("registered_at"),
         "updated_at": data.get("updated_at"),
     }
-    
-    # Convert numpy array to list for MongoDB storage
-    if face_encoding is not None:
-        doc["face_encoding"] = face_encoding.tolist()
-    
-    return doc
-
-
