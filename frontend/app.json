@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "FaceGate Access",
+    "slug": "facegate-access",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#6366F1"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.facegate.access",
+      "infoPlist": {
+        "NSCameraUsageDescription": "FaceGate Access cần quyền truy cập camera để quét và nhận diện khuôn mặt cho hệ thống kiểm soát ra vào.",
+        "NSPhotoLibraryUsageDescription": "Ứng dụng cần quyền truy cập thư viện ảnh để lưu và quản lý ảnh đã chụp."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#6366F1"
+      },
+      "package": "com.facegate.access",
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "FaceGate Access cần quyền truy cập camera để quét và nhận diện khuôn mặt."
+        }
+      ]
+    ]
+  }
+}
